@@ -1,0 +1,16 @@
+{
+  "variables": {
+    "grav_version": "1.0"
+  },
+  "builders": [{
+    "type": "docker",
+    "image": "nixos/nix:latest",
+    "export_path": "grav-deploy.tar"
+  }],
+  "provisioners": [
+    {
+      "type": "shell-local",
+      "command": "nix-env -i php"
+    }
+  ]
+}
