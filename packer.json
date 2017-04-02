@@ -1,6 +1,7 @@
 {
   "variables": {
-    "grav_version": "1.0"
+    "grav_version": "1.2.0",
+    "package_list01": "curl unzip php spawn-fcgi"
   },
   "builders": [{
     "type": "docker",
@@ -10,7 +11,7 @@
   "provisioners": [
     {
       "type": "shell-local",
-      "command": "nix-env -i php"
+      "command": "nix-env -i {{user `package_list01`}}"
     }
   ]
 }
