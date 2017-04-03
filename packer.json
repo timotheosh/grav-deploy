@@ -10,8 +10,17 @@
   }],
   "provisioners": [
     {
-      "type": "shell-local",
-      "command": "nix-env -i {{user `package_list01`}}"
+      "type": "shell",
+      "inline": [
+        "nix-env -i {{user `package_list01`}}"
+      ]
+    }
+  ],
+  "post-processors": [
+    {
+        "type": "docker-import",
+        "repository": "timotheosh/grav-deploy",
+        "tag": "{{user `grav_version`}}"
     }
   ]
 }
